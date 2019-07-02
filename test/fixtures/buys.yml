@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  container: one
+  expiration_date: 2019-07-01 20:24:56
+
+two:
+  amount: 1
+  container: two
+  expiration_date: 2019-07-01 20:24:56
