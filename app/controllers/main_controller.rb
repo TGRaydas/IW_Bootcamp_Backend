@@ -28,11 +28,31 @@ class MainController < ApplicationController
 		render json: {value: container.value, last_update_time: last_update_time, last_update_date: last_update_date, last_buy: last_buy}
 	end
 
+	def buy_points
+		container = Container.find(params[:id])
+		Buy.create(container: container, amount: params[:count])
+		last_buy = container.last_buy
+		last_update_date = container.updated_at.to_s.split[0]
+		last_update_time = container.updated_at.to_s.split[1]
+		container.update(value: container.value - params[:count].to_i, total: container.total + params[:count].to_i, last_buy: params[:count].to_i)
+		render json: {value: container.value, last_update_time: last_update_time, last_update_date: last_update_date, last_buy: last_buy}
+	end
+
 	def all_buys
 		container = Container.find(params[:id])
 		buys = container.buys
 
 		render json: {data: buys}
+	end
+
+	def get_device
+		dispenser = Dispenser.find(params[:id])
+		render json: {data: dispenser.ble_id}
+	end
+
+	def get_info
+	  pdf_filename = File.join(Rails.root, "app/views/main/file.pdf")
+	  send_file(pdf_filename, :filename => "file.pdf", :type => "application/pdf")
 	end
 
 end

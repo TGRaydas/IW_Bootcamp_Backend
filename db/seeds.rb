@@ -8,3 +8,4 @@
 
 
 Container.create(value: 0, total: 0)
+Dispenser.create(ble_id: '00:21:13:01:0F:A5')
