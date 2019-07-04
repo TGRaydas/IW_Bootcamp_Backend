@@ -25,7 +25,7 @@ class MainController < ApplicationController
 				end
 			end
 		end
-		render json: {value: container.value, , total: total,last_update_time: last_update_time, last_update_date: last_update_date, last_buy: last_buy}
+		render json: {value: container.value, total: total,last_update_time: last_update_time, last_update_date: last_update_date, last_buy: last_buy}
 	end
 
 	def buy
